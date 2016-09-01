@@ -1,0 +1,34 @@
+{
+  "name": "akh.state",
+  "version": "0.0.0",
+  "description": "Akh state monad",
+  "author": "Matt Bierner",
+  "license": "MIT",
+  "keywords": [
+    "monad transformer",
+    "monad",
+    "akh",
+    "state",
+    "state monad"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattbierner/akh-state.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mattbierner/akh-state/issues"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "akh.codensity": "^0.0.1",
+    "akh.core.spec": "0.x",
+    "akh.identity": "^0.1.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha ./tests"
+  }
+}
