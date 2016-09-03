@@ -1,4 +1,4 @@
-[Akh](https://github.com/mattbierner/akh) state monad
+# State Monad and Monad Transformer for [Akh Javascript Monad Library](https://github.com/mattbierner/akh)
 
 The `StateT` monad transformer add state to a monad. The base type `State` provides state on its own.
 
