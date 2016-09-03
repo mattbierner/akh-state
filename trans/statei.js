@@ -13,7 +13,7 @@ const StateMonad = require('../spec/state')
 
 /**
  * Value, state pair.
- */ 
+ */
 var Pair = (value, state) => ({ value, state })
 
 /* Transformer
@@ -27,7 +27,7 @@ var runStateT = (m, s) =>
  * @param m Base monad.
  */
 StateT = (m) => {
-    var Instance = function(run) {
+    var Instance = function (run) {
         this._run = run
     }
 
@@ -35,36 +35,44 @@ StateT = (m) => {
         x =>
             new Instance(s =>
                 m.of(Pair(x, s))),
-        
-        function(f) {
+
+        function (f) {
             return new Instance(s =>
                 runStateT(this, s).chain(x =>
                     runStateT(f(x.value), x.state)))
         })
-    
+
     spec.Monoid(Instance,
         new Instance(_ => m.zero),
-        
-        function(b) {
+
+        function (b) {
             return new Instance(s =>
                 runStateT(this, s).concat(runStateT(b, s)))
         })
-    
+
     spec.Transformer(Instance, m,
         t =>
             new Instance(s =>
                 t.chain(x => m.of(Pair(x, s)))))
-    
+
     StateMonad(Instance,
         new Instance(s =>
             m.of(Pair(s, s))),
-        
+
         s =>
             new Instance(_ =>
                 m.of(Pair(s, s))))
-    
-    Instance.prototype.run = function(s) {
+
+    Instance.prototype.run = function (s) {
         return StateT.run(m, s)
+    }
+
+    Instance.prototype.eval = function (s) {
+        return StateT.eval(m, s)
+    }
+
+    Instance.prototype.exec = function (s) {
+        return StateT.exec(m, s)
     }
 
     return Instance

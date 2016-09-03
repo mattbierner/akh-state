@@ -7,17 +7,22 @@ describe('State', () => {
         const c = State.of(3)
 
         assert.strictEqual(3, State.eval(c, 's'))
+        assert.strictEqual(3, c.eval('s'))
+
         assert.strictEqual('s', State.exec(c, 's'))
+        assert.strictEqual('s', c.exec('s'))
     })
 
     it("simple_bind", () => { 
-        const c = State.of(3).chain(function (x) {
-            return State.of(x + 5)
-        })
+        const c = State.of(3).chain(x => State.of(x + 5))
 
         assert.deepEqual(
-            State.run(c, 's'),
-            { value: 8, state: 's' })
+            { value: 8, state: 's' }, 
+            State.run(c, 's'))
+
+        assert.deepEqual(
+            { value: 8, state: 's' },
+            c.run('s'))
     })
 
     it("chain_order", () => {

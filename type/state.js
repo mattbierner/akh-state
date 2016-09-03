@@ -13,8 +13,11 @@ const State = StateT(Identity)
  * @param m State computation.
  * @param s Initial state.
  */
-State.run = function(m, s) {
-    return Identity.run(StateT.run(m, s));
+State.run = (m, s) =>
+    Identity.run(StateT.run(m, s))
+
+State.prototype.run = function(s) {
+    return State.run(this, s)
 }
 
 /**
@@ -23,8 +26,11 @@ State.run = function(m, s) {
  * @param m State computation.
  * @param s Initial state.
  */
-State.eval = function(m, s) {
-    return Identity.run(StateT.eval(m, s));
+State.eval = (m, s) => 
+    Identity.run(StateT.eval(m, s))
+
+State.prototype.eval = function(s) {
+    return State.eval(this, s)
 }
 
 /**
@@ -33,8 +39,11 @@ State.eval = function(m, s) {
  * @param m State computation.
  * @param s Initial state.
  */
-State.exec = function(m, s) {
-    return Identity.run(StateT.exec(m, s));
+State.exec = (m, s) =>
+    Identity.run(StateT.exec(m, s))
+
+State.prototype.exec = function(s) {
+    return State.exec(this, s)
 }
 
 module.exports = State

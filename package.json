@@ -1,7 +1,7 @@
 {
   "name": "akh.state",
-  "version": "0.0.0",
-  "description": "Akh state monad",
+  "version": "0.0.1",
+  "description": "Akh state monad and monad transformer",
   "author": "Matt Bierner",
   "license": "MIT",
   "keywords": [
