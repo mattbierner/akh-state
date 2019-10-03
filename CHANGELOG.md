@@ -1,5 +1,8 @@
 # ChangeLog
 
+## 0.0.2 - October 2, 2019
+* Make sure we pick up newest version of `Codensity` with fixes
+
 ## 0.0.1 - September 2, 2016
 * Fixing `m.run` interfaces.
 
